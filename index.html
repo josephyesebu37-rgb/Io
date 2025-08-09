@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Murrel Store — Home</title><link rel="stylesheet" href="style.css"></head>
+<body>
+  <header class="header">
+    <div class="container" style="display:flex;align-items:center;gap:12px">
+      <div class="logo">MurrelStore</div>
+      <div class="search"><input id="searchInput" placeholder="Search products, e.g., fry, fingerlings"><button onclick="doSearch()">Search</button></div>
+      <div class="nav"><a href="index.html">Home</a><a href="products.html">Products</a><a href="cart.html">Cart <span id="cartCount" class="cart-count">0</span></a><a href="contact.html">Contact</a></div>
+    </div>
+  </header>
+
+  <div class="container">
+    <section class="hero card">
+      <div style="flex:1">
+        <h1>Premium Murrel Fish Seeds & Supplies</h1>
+        <p class="muted">High-survival fry, fingerlings, feed & equipment. Fast delivery & expert support.</p>
+        <div style="margin-top:12px"><a class="btn" href="products.html">Shop Now</a> <a class="btn" href="https://wa.me/919505329034?text=Hello%20I%20want%20to%20order%20from%20your%20store" target="_blank">Order via WhatsApp</a></div>
+      </div>
+      <div style="width:320px;text-align:center"><img src="https://images.unsplash.com/photo-1549887534-5c9a8d0b0d3a?q=80&w=800&auto=format&fit=crop&crop=entropy" alt="fish" style="width:100%;border-radius:6px"></div>
+    </section>
+
+    <section style="margin-top:16px">
+      <h2>Featured Products</h2>
+      <div id="homeProducts" class="products-grid"></div>
+    </section>
+
+    <section style="margin-top:16px" class="card">
+      <h2>Why choose us</h2>
+      <ul class="muted">
+        <li>Certified hatchery partners and strict health checks</li>
+        <li>Local-adapted genetics for better survival</li>
+        <li>Phone & WhatsApp support: +919505329034</li>
+      </ul>
+    </section>
+
+    <footer class="footer">
+      © 2025 MurrelStore — Contact +919505329034
+    </footer>
+  </div>
+
+<script src="app.js"></script>
+<script>
+function doSearch(){ const q=document.getElementById('searchInput').value.toLowerCase(); const filtered = PRODUCTS.filter(p=>p.title.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)); if(filtered.length===0) alert('No results'); else { localStorage.setItem('mf_search', JSON.stringify(filtered)); window.location.href='products.html'; } }
+window.addEventListener('load', ()=>{ renderProducts('homeProducts', PRODUCTS.slice(0,4)); });
+</script>
+</body>
+</html>

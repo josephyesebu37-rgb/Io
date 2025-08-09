@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Cart — MurrelStore</title><link rel="stylesheet" href="style.css"></head>
+<body>
+  <header class="header">
+    <div class="container" style="display:flex;align-items:center;gap:12px">
+      <div class="logo">MurrelStore</div>
+      <div class="nav"><a href="index.html">Home</a><a href="products.html">Products</a><a href="cart.html">Cart <span id="cartCount" class="cart-count">0</span></a><a href="contact.html">Contact</a></div>
+    </div>
+  </header>
+  <div class="container">
+    <div class="card">
+      <h1>Your Cart</h1>
+      <div id="cartContainer"></div>
+    </div>
+  </div>
+  <a class="whatsapp" href="https://wa.me/919505329034?text=Hello%20I%20want%20to%20order%20from%20your%20store" target="_blank">WhatsApp — +919505329034</a>
+  <footer class="footer">© 2025 MurrelStore</footer>
+<script src="app.js"></script>
+<script>window.addEventListener('load', renderCart);</script>
+</body>
+</html>

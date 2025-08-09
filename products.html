@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"/><meta name="viewport" content="width=device-width,initial-scale=1"/><title>Products — MurrelStore</title><link rel="stylesheet" href="style.css"></head>
+<body>
+  <header class="header">
+    <div class="container" style="display:flex;align-items:center;gap:12px">
+      <div class="logo">MurrelStore</div>
+      <div class="search"><input id="searchInput2" placeholder="Search products"><button onclick="doSearch2()">Search</button></div>
+      <div class="nav"><a href="index.html">Home</a><a href="products.html">Products</a><a href="cart.html">Cart <span id="cartCount" class="cart-count">0</span></a><a href="contact.html">Contact</a></div>
+    </div>
+  </header>
+
+  <div class="container main">
+    <aside class="sidebar card">
+      <div class="categories card">
+        <h3>Categories</h3>
+        <ul>
+          <li><a href="#" onclick="filterCat('All');return false;">All</a></li>
+          <li><a href="#" onclick="filterCat('Seeds');return false;">Seeds</a></li>
+          <li><a href="#" onclick="filterCat('Feed');return false;">Feed</a></li>
+          <li><a href="#" onclick="filterCat('Equipment');return false;">Equipment</a></li>
+        </ul>
+      </div>
+    </aside>
+    <main style="flex:1">
+      <div class="card">
+        <h1>Products</h1>
+        <div id="productsGrid" class="products-grid"></div>
+      </div>
+    </main>
+  </div>
+
+  <a class="whatsapp" href="https://wa.me/919505329034?text=Hello%20I%20want%20to%20order%20from%20your%20store" target="_blank">WhatsApp — +919505329034</a>
+  <footer class="footer">© 2025 MurrelStore</footer>
+<script src="app.js"></script>
+<script>
+function doSearch2(){ const q=document.getElementById('searchInput2').value.toLowerCase(); const filtered = PRODUCTS.filter(p=>p.title.toLowerCase().includes(q)||p.desc.toLowerCase().includes(q)); localStorage.setItem('mf_search', JSON.stringify(filtered)); renderProducts('productsGrid', filtered); }
+function filterCat(cat){ let filtered = PRODUCTS; if(cat!=='All') filtered = PRODUCTS.filter(p=>p.category===cat); renderProducts('productsGrid', filtered); }
+window.addEventListener('load', ()=>{ const s = JSON.parse(localStorage.getItem('mf_search')||'null'); if(s) renderProducts('productsGrid', s); else renderProducts('productsGrid', PRODUCTS); });
+</script>
+</body>
+</html>
